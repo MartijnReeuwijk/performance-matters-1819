@@ -1,0 +1,86 @@
+<!-- // boro: "BRONX"
+// incident_key: "136393517"
+// jurisdiction_code: "0"
+// latitude: "40.8452198"
+// longitude: "-73.908443339"
+// occur_date: "2014-04-22T00:00:00.000"
+// occur_time: "18:38:00"
+
+// Perp wont always be there
+
+// perp_age_group: "18-24"
+// perp_race: "ASIAN / PACIFIC ISLANDER"
+// perp_sex: "M"
+// precinct: "46"
+// statistical_murder_flag: false
+// vic_age_group: "18-24"
+// vic_race: "ASIAN / PACIFIC ISLANDER"
+// vic_sex: "M"
+// x_coord_cd: "1009582"
+// y_coord_cd: "247224" -->
+
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<%- include('../partials/head'); -%>
+
+<body>
+  <main class="main">
+    <article>
+      <h1>
+        <%= title %>
+      </h1>
+      <h5>
+        Below are are the all the recorded gun incidents from NYC and the
+        NYPD.
+      </h5>
+      <p></p>
+      <%- include('../partials/back'); -%>
+
+      <aside id="deaths" class="deaths borderRadius">
+        <h2>Deadly incidents</h2>
+        <div id="personKilled">
+        </div>
+      </aside>
+    </article>
+
+    <div id="list">
+      <%- include('../partials/loader'); -%>
+      <% data.forEach(function(item){ %>
+             <!-- <li><%= item %></li> -->
+
+
+
+           <% }) %>
+<!--
+<div class="incident shadowHover ${
+    item.statistical_murder_flag ? "death" : "alive"
+  } borderRadius">
+  <a href="#${item.incident_key}">
+  <p>Casenumber:${item.incident_key}</p>
+  <p>Location:${item.boro}</p>
+  <p>Death:${item.statistical_murder_flag ? "Yes" : "No"}</p>
+  <p>Victim age: ${item.vic_age_group}</p>
+  <p>Precinct:${item.precinct}</p>
+  ${
+    item.statistical_murder_flag
+      ? '<img class="spinlol" id="spinlol" src="./public/img/rip.png" alt="">'
+      : ""
+  }
+  </a>
+  </div>
+ -->
+
+
+    </div>
+  </main>
+</body>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWwwBMpHYGzso-GSVeGT8vL1nMRVeBEpI"></script>
+  <script type="text/javascript" src="./public/js/routie.js"></script>
+  <script type="text/javascript" src="./public/js/map.js"></script>
+  <script type="text/javascript" src="./public/js/app2.js"></script> -->
+
+<!-- Map api need to add api -->
+
+</html>
