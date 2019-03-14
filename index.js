@@ -26,9 +26,7 @@ app.use(
 app.use(compression());
 // set the view engine to ejs
 app.set("view engine", "ejs");
-
 app.use(express.static("static"));
-
 app.get("/", (req, res) => {
   // fix error handel
   request(
@@ -36,9 +34,7 @@ app.get("/", (req, res) => {
     (error, response, body) => {
       // very important
       const data = JSON.parse(body);
-      const victim = data.filter(
-        victim => victim.statistical_murder_flag == true
-      );
+      const victim = dataFilterMurder(data);
       if (response) {
         res.render("pages/index", {
           title: "NYC gun incidents",
@@ -53,9 +49,33 @@ app.get("/", (req, res) => {
 });
 
 app.get("/img", (req, res) => res.send(`<img src="/img/img.jpg" alt="">`));
+// de data in de results is mega shit moet ik nog fixen zeker voor performance
 app.get("/:caseId", (req, res) => {
-  // params is een object met de key caseId
-  res.send(req.params.caseId);
+  request(
+    "https://data.cityofnewyork.us/resource/9895-df76.json",
+    (error, response, body) => {
+      const data = JSON.parse(body);
+      const id = req.params.caseId;
+      const victim = victimFilter(data, id);
+      if (response) {
+        res.render("pages/detail", {
+          title: "NYC gun incidents",
+          victim: victim
+        });
+      } else {
+        res.send(`<p>The data doesnt work</p>`);
+      }
+    }
+  );
 });
+
+// maak dit objects met code
+function dataFilterMurder(data) {
+  return data.filter(victim => victim.statistical_murder_flag == true);
+}
+
+function victimFilter(data, id) {
+  return data.filter(victim => victim.incident_key == id);
+}
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
