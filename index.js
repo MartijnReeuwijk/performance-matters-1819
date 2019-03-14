@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
           victim: victim
         });
       } else {
-        res.send(`<p>The data doesnt work</p>`);
+        res.send(`<p>The New-york city database might be down</p>`);
       }
     }
   );
@@ -59,11 +59,11 @@ app.get("/:caseId", (req, res) => {
       const victim = victimFilter(data, id);
       if (response) {
         res.render("pages/detail", {
-          title: "NYC gun incidents",
+          title: "NYC gun" + victim ,
           victim: victim
         });
       } else {
-        res.send(`<p>The data doesnt work</p>`);
+        res.send(`<p>The New-york city database might be down</p>`);
       }
     }
   );
