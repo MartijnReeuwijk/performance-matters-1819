@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<%- include('../partials/head'); -%>
+
+<body>
+  <main class="main">
+    <article>
+      <h1>
+        <%= title %>
+      </h1>
+      <h5>
+        Below are are the all the recorded gun incidents from NYC and the
+        NYPD.
+      </h5>
+      <p></p>
+      <%- include('../partials/back'); -%>
+
+      <aside id="deaths" class="deaths borderRadius">
+        <h2>Deadly incidents</h2>
+        <div id="personKilled">
+          <% victim.forEach(function(item){ %>
+          <a href="<%= item.incident_key %>">
+            <div class="personKilledImg shadowHover <%= item.vic_sex =='M' ? 'male' : 'female' %>"> </div>
+          </a>
+            <% }) %>
+          </div>
+      </aside>
+    </article>
+
+    <div id="list">
+      <% victim.forEach(function(item){ %>
+      <div class="incident shadowHover borderRadius <%= item.statistical_murder_flag ? " death" : "alive" %> ">
+        <a href=" <%= item.incident_key %> ">
+          <p>Casenumber:
+            <%= item.incident_key %>
+          </p>
+          <p>Location:
+            <%= item.boro %>
+          </p>
+          <p>Victim age:
+            <%= item.vic_age_group %>
+          </p>
+          <p>Precinct:
+            <%= item.precinct %>
+          </p>
+          <%if (item.statistical_murder_flag == true) { %>
+          <img class="spinlol" src="/img/rip.png" alt="Overleden">
+          <% } %>
+        </a>
+      </div>
+      <% }) %>
+    </div>
+  </main>
+</body>
+<!-- <script type="text/javascript" src="./public/js/routie.js"></script>
+  <script type="text/javascript" src="./public/js/map.js"></script>
+  <script type="text/javascript" src="./public/js/app2.js"></script>  -->
+<!-- <script type="module" charset="utf-8" type="text/javascript" src="/js/modules.js"></script> -->
+<!-- Map api need to add api -->
+
+</html>
