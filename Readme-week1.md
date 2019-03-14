@@ -1,28 +1,30 @@
-![Demo pic](https://github.com/MartijnReeuwijk/web-app-from-scratch-18-19/blob/master/readmeAssets/hero.png)
+![Demo pic](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/hero.png)
 
 # Performance matters
 
 De week1 Readme van Performance-matters.
 Het gaat hier vooral om het verbeteren van de performance van de Web-app-from-scratch App.
+Hier onder is de "standaard" versie zonder optimalisatie.
 
-![Maps API](https://github.com/MartijnReeuwijk/web-app-from-scratch-18-19/blob/master/week2/public/img/demo.png)
-[Demo](https://martijnreeuwijk.github.io/web-app-from-scratch-18-19/week2/) - Live demo
+![First test](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/1.png)
+
 
 # Tabel of content
 
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Running](#running)
-- [Linting](#linting)
-- [Build With](#build-with)
-- [Data formating](#data-formating)
-  - [Data output example](#data-output-example)
-    - [Standard use object](#standard-use-object)
-- [Javascript templating](#javascript-templating)
-- [Authors](#authors)
-- [License](#license)
-- [Acknowledgments and Thanks](#acknowledgments-and-thanks)
+- [Performance matters](#performance-matters)
+- [Tabel of content](#tabel-of-content)
+  * [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+  * [Running](#running)
+  * [Linting](#linting)
+  * [Build With](#build-with)
+- [Server side rendering](#server-side-rendering)
+      - [Hier de audits](#hier-de-audits)
+- [EJS templating](#ejs-templating)
+  * [Authors](#authors)
+  * [License](#license)
+  * [Acknowledgments and Thanks](#acknowledgments-and-thanks)
 
 ## Getting Started
 
@@ -37,13 +39,15 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-- `git@github.com:MartijnReeuwijk/web-app-from-scratch-18-19.git`
-- `cd web-app-from-scratch-18-19`
+- `git@github.com:MartijnReeuwijk/performance-matters-1819.git`
+- `cd performance-matters-1819`
 - `npm install`
+
 
 ## Running
 
-Local hosting is not needed.
+`node inex.js`
+localhost 3000.
 
 ## Linting
 
@@ -54,84 +58,52 @@ To run the Prettier use the code below
 
 ## Build With
 
-- [Routie](http://projects.jga.me/routie/) - routie for routing in the app
 - [Prettier](https://prettier.io/docs/en/options.html) - Prettier.io - Linter
+- [Node.js](https://nodejs.org/en/) - nodejs
+- [Express](https://expressjs.com/) - Express
 
-## Data formating
 
-The data from the API is very clear and easy to use underneath this is an example of the API's output.
-It doesnt need any changing for the data i'am going to use.
+# Server side rendering
+We hebben een client side app omgebouwed to een serverside app.
+Het het idee er achter om te optimaliseren voor de langsamen 3G en de oude telefoons/computers.
+Hier is de site om geschreven naar een serverside app samen met compression van G-zip.
 
-### Data output example
+#### Hier de audits
+![Second test](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/2.png)
 
-##### Standard use object
+Audits met minifyHTML en compression.
+![third test](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/3.png)
 
-This is an example on how the data looks.
-Not all the data is present in all the different cases.
+# EJS templating
 
-```
-boro: "BROOKLYN"
-incident_key: "138817042"
-jurisdiction_code: "0"
-latitude: "40.651465108"
-longitude: "-73.954236416"
-occur_date: "2014-09-21T00:00:00.000"
-occur_time: "23:15:00"
-precinct: "67"
-statistical_murder_flag: false
-vic_age_group: "25-44"
-vic_race: "BLACK"
-vic_sex: "M"
-x_coord_cd: "996949"
-y_coord_cd: "176623"
-```
-
-## Javascript templating
-
-This is the first time i used Javascript templating, and its really easy and usefull.
-Here is a example of my code, this will generate all the items/lists.
-You can very easly
+Zelf heb ik nog nooit eerder EJS gebruikt voor templating.
+Hier onder zie je hoe je de template moet opbouwen, zelf heb ik de meeste logica in de index.js gehouden.
 
 ```
-<div class="incident ${item.statistical_murder_flag ? "death" : "alive"}">
-<p>Casenumber:${item.incident_key}</p>
-<p>Location:${item.boro}</p>
-<p>Death:${item.statistical_murder_flag ? "Yes" : "No"}</p>
-<p>Victim age: ${item.vic_age_group}</p>
-<p>Precinct:${item.precinct}</p>
-${
-  item.statistical_murder_flag
-    ? '<img src="./public/img/rip.png" alt="">'
-    : ""
-}
+<div id="list">
+  <% data.forEach(function(item){ %>
+  <div class="incident shadowHover borderRadius <%= item.statistical_murder_flag ? " death" : "alive" %> ">
+    <a href=" <%= item.incident_key %> ">
+      <p>Casenumber:
+        <%= item.incident_key %>
+      </p>
+      <p>Location:
+        <%= item.boro %>
+      </p>
+      <p>Victim age:
+        <%= item.vic_age_group %>
+      </p>
+      <p>Precinct:
+        <%= item.precinct %>
+      </p>
+      <%if (item.statistical_murder_flag == true) { %>
+      <img class="spinlol" src="/img/rip.png" alt="Overleden">
+      <% } %>
+    </a>
+  </div>
+  <% }) %>
 </div>
 ```
-
-## Routie
-
-Routie checkes for the numbers/text after the # sign and turns this into a parameter then i call the dataFilter() functions to return the selected object.
-Then i will render the page with the filterd data
-
-```
-routie(":incident", incident => {
-  console.log(incident);
-  dataFilter(incident, data);
-});
-```
-
-## Diagrams
-
-I used an actor diagram to order and compartmentalize the functions and flow of the app. It's useful to keep order in the code and it structure, By making you think ahead.
-
-### Actor Diagram
-
-![Actor-Diagram](https://github.com/MartijnReeuwijk/web-app-from-scratch-18-19/blob/master/week2/public/img/actor.png)
-
-### Interaction Diagram
-
-![Interaction-Diagram](https://github.com/MartijnReeuwijk/web-app-from-scratch-18-19/blob/master/week2/public/img/interactionChart1.png)
-![Interaction-Diagram](https://github.com/MartijnReeuwijk/web-app-from-scratch-18-19/blob/master/week2/public/img/interactionChart2.png)
-![Interaction-Diagram](https://github.com/MartijnReeuwijk/web-app-from-scratch-18-19/blob/master/week2/public/img/interactionChart3.png)
 
 ## Authors
 
