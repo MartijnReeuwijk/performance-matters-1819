@@ -1,10 +1,29 @@
 // const dotenv = require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const request = require("request");
 const ejsLint = require("ejs-lint");
+const compression = require("compression");
+const minifyHTML = require("express-minify-html");
 
+// Used to minifyHTML the HTML
+app.use(
+  minifyHTML({
+    override: true,
+    exception_url: false,
+    htmlMinifier: {
+      removeComments: true,
+      collapseWhitespace: true,
+      collapseBooleanAttributes: true,
+      removeAttributeQuotes: true,
+      removeEmptyAttributes: true,
+      minifyJS: true
+    }
+  })
+);
+// Used to compress with G-zip
+app.use(compression());
 // set the view engine to ejs
 app.set("view engine", "ejs");
 
@@ -15,21 +34,26 @@ app.get("/", (req, res) => {
   request(
     "https://data.cityofnewyork.us/resource/9895-df76.json",
     (error, response, body) => {
+      // very important
+      const data = JSON.parse(body);
+      const victim = data.filter(
+        victim => victim.statistical_murder_flag == true
+      );
       if (response) {
-        console.log(body);
         res.render("pages/index", {
           title: "NYC gun incidents",
-          data: [body]
+          data: data,
+          victim: victim
         });
       } else {
-        res.send(`<img src="/img/img.jpg" alt="">`);
+        res.send(`<p>The data doesnt work</p>`);
       }
     }
   );
 });
 
 app.get("/img", (req, res) => res.send(`<img src="/img/img.jpg" alt="">`));
-app.get("/case/:caseId", (req, res) => {
+app.get("/:caseId", (req, res) => {
   // params is een object met de key caseId
   res.send(req.params.caseId);
 });
