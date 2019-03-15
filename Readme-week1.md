@@ -1,6 +1,6 @@
 ![Demo pic](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/hero.png)
 
-![Demo link](https://nycgunincidents.herokuapp.com/)
+[Demo link](https://nycgunincidents.herokuapp.com/)
 
 # Performance matters
 
