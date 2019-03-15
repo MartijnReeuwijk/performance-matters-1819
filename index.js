@@ -59,7 +59,7 @@ app.get("/:caseId", (req, res) => {
       const victim = victimFilter(data, id);
       if (response) {
         res.render("pages/detail", {
-          title: "NYC gun" + victim ,
+          title: "NYC gun incidents",
           victim: victim
         });
       } else {
