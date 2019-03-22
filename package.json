@@ -4,7 +4,7 @@
   "description": "In dit vak gaan we de eerder bij de OBA gemaakte client side web applicatie ombouwen naar een server side gerenderde applicatie. Verder gaan we een reeks van optimalisaties doorvoeren om de performance van de applicatie te verbeteren. Uiteindelijk zorgen we ervoor dat de applicatie offline beschikbaar.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -23,13 +23,12 @@
     "ejs-lint": "^0.3.0",
     "env": "0.0.2",
     "express": "^4.16.4",
+    "express-cache-controller": "^1.1.0",
     "express-minify-html": "^0.12.0",
     "html-minifier": "^3.5.21",
+    "memory-cache": "^0.2.0",
     "node-gzip": "^1.1.2",
     "nodemon": "^1.18.10",
     "request": "^2.88.0"
-  },
-  "scripts": {
-    "start": "node index.js"
   }
 }

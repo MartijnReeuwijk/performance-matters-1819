@@ -1,20 +1,17 @@
+@font-face {
+  font-family: "raleway", Arial, sans-serif;
+  src:url();
+
+}
+
 body {
-  /* background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
-  background-size: 400% 400%; */
-  font-family: "raleway";
+  font-family: "raleway", Arial, sans-serif;
   font-style: normal;
   background-color: #e2e1e0;
   color: black;
-  /* -moz-animation: AnimationName 30s ease infinite;
-  -webkit-animation: AnimationName 30s ease infinite;
-  animation: AnimationName 30s ease infinite; */
 }
 article {
-  /* display: flex; */
   width: 75%;
-  /* align-self: flex; */
-  /* flex-wrap: wrap; */
-  /* justify-content: center; */
   margin: 0 auto;
 }
 aside {

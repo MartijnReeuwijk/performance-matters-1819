@@ -1,0 +1,21 @@
+{
+  "short_name": "NYC-DATA",
+  "name": "NYC crime",
+  "icons": [
+    {
+      "src": "/img/cat.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/cat.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#3fa9f5",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#3fa9f5"
+}
