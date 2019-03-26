@@ -7,13 +7,13 @@ const ejsLint = require("ejs-lint");
 const compression = require("compression");
 const minifyHTML = require("express-minify-html");
 
-app.use((req, res, next) => {
-  res.append("Access-Control-Allow-Origin", ["*"]);
-  res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.append("Access-Control-Allow-Headers", "Content-Type");
-  res.append("Cache-Control", "max-age=" + 365 * 24 * 60 * 60);
-  next();
-});
+// app.use((req, res, next) => {
+//   res.append("Access-Control-Allow-Origin", ["*"]);
+//   res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+//   res.append("Access-Control-Allow-Headers", "Content-Type");
+//   res.append("Cache-Control", "max-age=" + 365 * 24 * 60 * 60);
+//   next();
+// });
 
 // Used to minifyHTML the HTML
 app.use(

@@ -1,14 +1,18 @@
 @font-face {
   font-family: "raleway", Arial, sans-serif;
+
   src:url();
 
 }
 
 body {
+  margin: 0px;
+
+  color: black;
+  background-color: #e2e1e0;
+
   font-family: "raleway", Arial, sans-serif;
   font-style: normal;
-  background-color: #e2e1e0;
-  color: black;
 }
 article {
   width: 75%;
@@ -16,12 +20,14 @@ article {
 }
 aside {
   display: flex;
-  width: 100%;
-  opacity: 1;
   align-self: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  width: 100%;
   margin: 0 auto;
+
+  opacity: 1;
 }
 
 h1,
@@ -32,13 +38,16 @@ h5 {
 a,
 a:active,
 a:hover {
-  color: black;
   text-decoration: none;
+
+  color: black;
+
   font-style: normal;
 }
 .shadowHover:hover {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 .borderRules {
   border-radius: 5px;
@@ -54,47 +63,55 @@ a:hover {
 
 .button {
   display: inline-flex;
+
   width: 200px;
   height: 50px;
   margin: 0 auto;
+
   color: black;
   color: black;
   background-color: white;
+
   line-height: 50px;
 }
 
 .button p {
   margin: 0 auto;
+
   line-height: 50px;
 }
 .loader {
   width: 150px;
   height: 150px;
+
   background-image: url("../img/loading.gif");
+  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
 }
 .loader p {
   text-align: center;
+
   color: white;
 }
 .backbutton {
   width: 100px;
   height: 50px;
+
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+
   border: 1px solid black;
   background: linear-gradient(120deg, #ff416c 0%, #ff4b2b 100%);
   background-size: 100% 100%;
-  -moz-animation: AnimationName 30s ease infinite;
-  -webkit-animation: AnimationName 30s ease infinite;
-  animation: AnimationName 30s ease infinite;
 }
 
 .backbutton a {
+  -webkit-transition: all 100ms ease-in-out;
   -moz-transition: all 100ms ease-in-out;
   -ms-transition: all 100ms ease-in-out;
   -o-transition: all 100ms ease-in-out;
-  -webkit-transition: all 100ms ease-in-out;
   transition: all 100ms ease-in-out;
 }
 
@@ -104,35 +121,76 @@ a:hover {
 
 .backbutton a {
   width: 100%;
+
   text-align: center;
+}
+
+.heroImage{
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 60vh;
+  max-height: 800px;
+
+  background-image: url("https://www.nationalgeographic.com/content/dam/magazine/rights-exempt/2015/12/new-york/01nyskyline2048.ngsversion.1498250468733.adapt.1900.1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heroImage h2 {
+  width: 100%;
+
+  text-align: center;
+  text-transform: capitalize;
+
+  color: white;
+  text-shadow: 2px 2px 2px black;
+
+  line-height: 40px;
+  font-size: 40px;
+}
+.mainList{
+  height: 50px;
+  width: 100%;
 }
 
 #list {
   display: inline-flex;
-  width: 100%;
-  opacity: 1;
   align-self: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  width: 100%;
+
+  opacity: 1;
 }
+
 .deaths {
-  background-color: white;
   margin: 10px 0;
+
+  background-color: white;
 }
+
 .incident {
   position: relative;
+
   width: calc(33% - 40px);
   min-width: 150px;
   max-width: 500px;
   margin: 10px;
   padding: 10px;
-  opacity: 1;
-  background-color: white;
+
+  -webkit-transition: opacity 200ms ease-in-out;
   -moz-transition: opacity 200ms ease-in-out;
   -ms-transition: opacity 200ms ease-in-out;
   -o-transition: opacity 200ms ease-in-out;
-  -webkit-transition: opacity 200ms ease-in-out;
   transition: opacity 200ms ease-in-out;
+
+  opacity: 1;
+  background-color: white;
 }
 
 .incident p {
@@ -146,24 +204,28 @@ a:hover {
   position: absolute;
   top: 10px;
   right: 10px;
+
   width: 25px;
   height: auto;
 }
 
 .map {
   display: inline-flex;
+
   width: 100%;
   height: 500px;
+
   background-color: red;
 }
 
 #list:hover .incident:not(:hover) {
-  opacity: 0.65;
+  -webkit-transition: opacity 200ms ease-in-out;
   -moz-transition: opacity 200ms ease-in-out;
   -ms-transition: opacity 200ms ease-in-out;
   -o-transition: opacity 200ms ease-in-out;
-  -webkit-transition: opacity 200ms ease-in-out;
   transition: opacity 200ms ease-in-out;
+
+  opacity: 0.65;
 }
 #personKilled {
   display: inline-flex;
@@ -174,6 +236,7 @@ a:hover {
 .personKilledImg {
   width: 25px;
   height: 50px;
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -186,5 +249,6 @@ a:hover {
 .female {
   background-image: url("../img/female.svg");
 }
+
 
 /* background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); */
