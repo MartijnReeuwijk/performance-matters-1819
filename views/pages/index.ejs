@@ -5,9 +5,19 @@
     <h2>New-york city</h2>
   </div>
   <main class="main">
-    <h2 class="h2Main">Gun incidents in New-york city</h2>
-    <div class="mainList" id="mainListIncident">
+    <h2 class="h2Main"><%= title %></h2>
+      <!-- <div class="mainList" id="mainListIncident"> -->
+<!-- People here -->
+      <!-- </div> -->
+      <div class="main-holder">
+      <% data.forEach(function(borrow){ %>
+        <a href="<%= borrow.name %>" style="background-image: url(<%= borrow.img %>)" class="heroBlock shadowHover">
+          <div class="">
+            <p><%= borrow.name %></p>
+          </div>
 
+        </a>
+      <% }) %>
     </div>
   </main>
 </body>

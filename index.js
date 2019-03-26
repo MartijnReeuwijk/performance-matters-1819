@@ -7,13 +7,13 @@ const ejsLint = require("ejs-lint");
 const compression = require("compression");
 const minifyHTML = require("express-minify-html");
 
-// app.use((req, res, next) => {
-//   res.append("Access-Control-Allow-Origin", ["*"]);
-//   res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-//   res.append("Access-Control-Allow-Headers", "Content-Type");
-//   res.append("Cache-Control", "max-age=" + 365 * 24 * 60 * 60);
-//   next();
-// });
+app.use((req, res, next) => {
+  res.append("Access-Control-Allow-Origin", ["*"]);
+  res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.append("Access-Control-Allow-Headers", "Content-Type");
+  res.append("Cache-Control", "max-age=" + 365 * 24 * 60 * 60);
+  next();
+});
 
 // Used to minifyHTML the HTML
 app.use(
@@ -37,15 +37,36 @@ app.use(compression());
 app.set("view engine", "ejs");
 app.use(express.static("static"));
 app.get("/", (req, res) => {
+  const borrow = [
+    { name: "BROOKLYN", img: "http://www.winick.com/uploads/images/brooklyn.jpg" },
+    { name: "BRONX", img: "https://i1.wp.com/www.blueharbourpropertymanagement.com/wp-content/uploads/2018/02/south-bronx.jpeg" },
+    { name: "QUEENS", img: "http://www.newyorkmania.it/wp-content/uploads/sites/52/2014/12/New-York-Queens.jpg" },
+    { name: "MANHATTAN", img: "https://i.ytimg.com/vi/FjU_x1106pg/maxresdefault.jpg" },
+    { name: "STATEN ISLAND", img: "https://solonuevayork.files.wordpress.com/2014/10/staten-island-wheel-and-mall-could-be-derailed.jpg" },
+    {
+      name: "All of Newyork",
+      img: "https://cdn.holidayguru.nl/wp-content/uploads/2017/05/new-york-city-cityscape-skyline-with-statue-of-liberty-shutterstock_339298199.jpg"
+    }
+  ];
+  res.render("pages/index", {
+    title: "Gun incidents in New-york city",
+    theme: "#3fa9f5",
+    data: borrow
+  });
+});
+
+app.get("/:city", (req, res) => {
   // fix error handel
-  request("https://data.cityofnewyork.us/resource/9895-df76.json",(error, response, body) => {
+  request(
+    "https://data.cityofnewyork.us/resource/9895-df76.json",
+    (error, response, body) => {
       // very important
       const data = JSON.parse(body);
       const victim = dataFilterMurder(data);
       if (response) {
-        res.render("pages/index", {
+        res.render("pages/filter", {
           title: "NYC gun incidents",
-          theme:"#3fa9f5",
+          theme: "#3fa9f5",
           // this is for non manifest stuff
           data: data,
           victim: victim
@@ -113,7 +134,5 @@ function victimFilter(data, id) {
 //   infoWindow = new google.maps.InfoWindow();
 //
 // }
-
-
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

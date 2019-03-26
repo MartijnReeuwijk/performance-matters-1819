@@ -138,6 +138,8 @@ a:hover {
   background-image: url("https://www.nationalgeographic.com/content/dam/magazine/rights-exempt/2015/12/new-york/01nyskyline2048.ngsversion.1498250468733.adapt.1900.1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+
+  border-bottom: 1px solid black;
 }
 
 .heroImage h2 {
@@ -155,6 +157,57 @@ a:hover {
 .mainList{
   height: 50px;
   width: 100%;
+}
+.h2Main{
+  text-align: center;
+}
+.main-holder{
+  width: 95%;
+  max-width: 1200px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.heroBlock{
+  width: calc(33% - 20px);
+  min-width: 300px;
+  height: 300px;
+  /* opacity: 0.5; */
+  background-color: #e2e1e0;
+  margin: 5px 10px;
+  display: inline-flex;
+  border-radius: 10px;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid black;
+  filter: grayscale(1);
+  transition: filter .5s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+
+}
+.heroBlock:hover,.heroBlock:active, .heroBlock:focus {
+  /* opacity: 1; */
+  filter: grayscale(0);
+  transition: filter .5s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+
+
+}
+/* Names */
+.heroBlock div {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  text-transform:uppercase;
+  border-radius: 0 0 10px 10px;
 }
 
 #list {
