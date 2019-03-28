@@ -19,18 +19,18 @@
         <h2>Deadly incidents</h2>
         <div id="personKilled">
           <% victim.forEach(function(item){ %>
-          <a href="<%= item.incident_key %>">
+          <a href="/victim/<%= item.incident_key %>">
             <div class="personKilledImg shadowHover <%= item.vic_sex =='M' ? 'male' : 'female' %>"> </div>
           </a>
-            <% }) %>
-          </div>
+          <% }) %>
+        </div>
       </aside>
     </article>
 
     <div id="list">
       <% data.forEach(function(item){ %>
       <div class="incident shadowHover borderRadius <%= item.statistical_murder_flag ? " death" : "alive" %> ">
-        <a href=" <%= item.incident_key %> ">
+        <a href="/victim/<%= item.incident_key %> ">
           <p>Casenumber:
             <%= item.incident_key %>
           </p>

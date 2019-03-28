@@ -6,7 +6,10 @@ const request = require("request");
 const ejsLint = require("ejs-lint");
 const compression = require("compression");
 const minifyHTML = require("express-minify-html");
-
+const gulp = require("gulp");
+const cssnano = require("gulp-cssnano");
+const concat = require("gulp-concat");
+const baseDir = "static/";
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", ["*"]);
   res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
@@ -14,6 +17,12 @@ app.use((req, res, next) => {
   res.append("Cache-Control", "max-age=" + 365 * 24 * 60 * 60);
   next();
 });
+
+// gulp
+//   .src([baseDir + "styles.css"])
+//   .pipe(concat("styles-minify.css"))
+//   .pipe(cssnano({ discardComments: { removeAll: true } }))
+//   .pipe(gulp.dest("static/minified"));
 
 // Used to minifyHTML the HTML
 app.use(
@@ -38,14 +47,14 @@ app.set("view engine", "ejs");
 app.use(express.static("static"));
 app.get("/", (req, res) => {
   const borrow = [
-    { name: "BROOKLYN", img: "http://www.winick.com/uploads/images/brooklyn.jpg" },
-    { name: "BRONX", img: "https://i1.wp.com/www.blueharbourpropertymanagement.com/wp-content/uploads/2018/02/south-bronx.jpeg" },
-    { name: "QUEENS", img: "http://www.newyorkmania.it/wp-content/uploads/sites/52/2014/12/New-York-Queens.jpg" },
-    { name: "MANHATTAN", img: "https://i.ytimg.com/vi/FjU_x1106pg/maxresdefault.jpg" },
-    { name: "STATEN ISLAND", img: "https://solonuevayork.files.wordpress.com/2014/10/staten-island-wheel-and-mall-could-be-derailed.jpg" },
+    { name: "BROOKLYN", img: "/img/cities/brooklyn.jpg" },
+    { name: "BRONX", img: "/img/cities/bronx.jpeg" },
+    { name: "QUEENS", img: "/img/cities/queens.jpg" },
+    { name: "MANHATTAN", img: "/img/cities/MANHATTAN.jpg" },
+    { name: "STATEN ISLAND", img: "/img/cities/state.jpg" },
     {
       name: "All of Newyork",
-      img: "https://cdn.holidayguru.nl/wp-content/uploads/2017/05/new-york-city-cityscape-skyline-with-statue-of-liberty-shutterstock_339298199.jpg"
+      img: "/img/cities/new-york.jpg"
     }
   ];
   res.render("pages/index", {
@@ -80,7 +89,7 @@ app.get("/:city", (req, res) => {
 
 app.get("/img", (req, res) => res.send(`<img src="/img/img.jpg" alt="">`));
 // de data in de results is mega shit moet ik nog fixen zeker voor performance
-app.get("/:caseId", (req, res) => {
+app.get("/victim/:caseId", (req, res) => {
   request(
     "https://data.cityofnewyork.us/resource/9895-df76.json",
     (error, response, body) => {
