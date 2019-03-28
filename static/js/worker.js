@@ -4,8 +4,14 @@ var urlsToCache = [
   '/',
   '/css/style.css',
   '/js/map.js',
-  '/img/*',
-  '/*',
+  '/img/skyline.png',
+  '/img/cities/bronx.jpeg',
+  '/img/cities/brooklyn.jpg',
+  '/img/cities/MANHATTAN.jpg',
+  '/img/cities/new-york.jpg',
+  '/img/cities/queens.jp',
+  '/img/cities/state.jp',
+
 ];
 
 self.addEventListener('install', function(event) {
