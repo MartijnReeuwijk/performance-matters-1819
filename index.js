@@ -6,9 +6,7 @@ const request = require("request");
 const ejsLint = require("ejs-lint");
 const compression = require("compression");
 const minifyHTML = require("express-minify-html");
-const gulp = require("gulp");
-const cssnano = require("gulp-cssnano");
-const concat = require("gulp-concat");
+
 const baseDir = "static/";
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", ["*"]);
@@ -17,12 +15,6 @@ app.use((req, res, next) => {
   res.append("Cache-Control", "max-age=" + 365 * 24 * 60 * 60);
   next();
 });
-
-// gulp
-//   .src([baseDir + "styles.css"])
-//   .pipe(concat("styles-minify.css"))
-//   .pipe(cssnano({ discardComments: { removeAll: true } }))
-//   .pipe(gulp.dest("static/minified"));
 
 // Used to minifyHTML the HTML
 app.use(
@@ -63,6 +55,9 @@ app.get("/", (req, res) => {
     data: borrow
   });
 });
+app.get("/Offline", (req, res) => {
+
+} )
 
 app.get("/:city", (req, res) => {
   // fix error handel

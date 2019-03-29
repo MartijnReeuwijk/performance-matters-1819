@@ -107,8 +107,22 @@ Hier onder zie je hoe je de template moet opbouwen, zelf heb ik de meeste logica
 ### Week 2 audits
 In deze week ben ik bezig geweest met Cookies en pre-load.
 De cookies zijn gelukt en dat scheelt heel veel tijd.
-![zonder-cookies](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/zonder.png)
-![met-cookies](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/met.png)
+![zonder-browercach](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/zonder.png)
+![met-browercach](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/met.png)
+
+
+### Week 3 ServiceWorker & New index-page
+Deze week ben in bezig geweest met het maken van een Nieuwe index-page/Home page, een manifest.
+Op de homepage heb ik express mega images gebruikt, zodat er meer is om te optimaliseren.
+![Banner](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/banner.png)
+
+Met het gebruik van een serviceWorker is er nu offline support. Dit is vooral handig voor mijn site omdat het is gebaseert op data die niet meer zou veranderen.
+![met-browercach](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/cache.png)
+
+Door het manifest.json bestand wat ik heb gebruikt werkt bij mij de site ook als "App" die je kan installen.
+![Install](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/install.png)
+
+
 ## Authors
 
 - **Martijn Reeuwijk** - [MartijnReeuwijk](https://github.com/MartijnReeuwijk)

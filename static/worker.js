@@ -2,6 +2,7 @@
 var CACHE_NAME = 'my-site-cache-v5';
 var urlsToCache = [
   '/',
+  '/Offline',
   '/css/style.css',
   '/js/map.js',
   '/img/skyline.png',
