@@ -122,6 +122,12 @@ Met het gebruik van een serviceWorker is er nu offline support. Dit is vooral ha
 Door het manifest.json bestand wat ik heb gebruikt werkt bij mij de site ook als "App" die je kan installen.
 ![Install](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/install.png)
 
+#### ImageOptim
+![ImageOptim](https://github.com/MartijnReeuwijk/performance-matters-1819/blob/master/readmeAssets/ImageOptim.png)
+Ik heb voor mijn image commpression ImageOptim gebruikt deze app reduced de file size.
+soms wel met 50% en je kan hier door gelijk zien hoe veel sneller je app is.
+
+
 
 ## Authors
 
